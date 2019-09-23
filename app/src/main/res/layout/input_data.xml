@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal"
+    android:paddingRight="@dimen/activity_horizontal"
+    android:paddingTop="@dimen/activity_vertical"
+    android:paddingBottom="@dimen/activity_vertical"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Judul"
+        android:textColor="@color/biru_tua"
+        android:textSize="20sp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/txtJudul"
+        >
+
+    </TextView>
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:hint="Masukkan Judul"
+        android:id="@+id/edtJudul"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Deskripsi"
+        android:textColor="@color/biru_tua"
+        android:textSize="20sp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/txtDeskripsi"
+        />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:hint="Masukkan Deskripsi"
+        android:id="@+id/edtDeskripsi"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="UPDATE"
+        android:textColor="@android:color/white"
+        android:background="@color/biru_tua"
+        android:layout_marginTop="20dp"
+        android:id="@+id/btn_update"
+
+        />
+
+
+
+
+
+</LinearLayout>
