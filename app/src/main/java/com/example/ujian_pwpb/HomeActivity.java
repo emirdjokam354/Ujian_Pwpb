@@ -72,7 +72,9 @@ public class HomeActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 siswaList.clear();
 
-                for (DataSnapshot siswaSnapshot : dataSnapshot.getChildren()){
+
+                siswaList = new ArrayList<>();
+                for(DataSnapshot siswaSnapshot : dataSnapshot.getChildren()){
                     Siswa siswa = siswaSnapshot.getValue(Siswa.class);
 
                     siswaList.add(siswa);
@@ -87,6 +89,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
+    //MENAMPILKAN DIALOG
     private void  showUpdateDialog(final String siswaId, final String judul, final String deskripsi){
         final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
@@ -96,6 +99,7 @@ public class HomeActivity extends AppCompatActivity {
         final Button btnHapus = dialogView.findViewById(R.id.btnHapus);
 
         dialogBuilder.setView(dialogView);
+
         dialogBuilder.setTitle("Pilih Aksi :"+judul);
 
         final AlertDialog alertDialog = dialogBuilder.create();
@@ -116,6 +120,7 @@ public class HomeActivity extends AppCompatActivity {
                 alertDialog.dismiss();
             }
         });
+
         btnHapus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,9 +130,9 @@ public class HomeActivity extends AppCompatActivity {
 
     }
     private void deleteSiswa(String id){
-        DatabaseReference dbSiswa = FirebaseDatabase.getInstance().getReference("siswa").child(id);
+        DatabaseReference dbSiswa = FirebaseDatabase.getInstance().getReference("Siswa").child(id);
 
         dbSiswa.removeValue();
-        Toast.makeText(this,"Data Berhasil di Hapus!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(HomeActivity.this,"Data Berhasil di Hapus!", Toast.LENGTH_LONG).show();
     }
 }

@@ -55,7 +55,7 @@ public class InputData extends AppCompatActivity {
             public void onClick(View view) {
                 if (action.equals("Insert")){
                     addSiswa();
-                }else if (action.equals("Update")){
+                }else if(action.equals("Update")){
                     String siswaId = bundle.getString("Id");
                     String judul = EdtJudul.getText().toString().trim();
                     String deskripsi = EdtDeskripsi.getText().toString().trim();
@@ -90,19 +90,21 @@ public class InputData extends AppCompatActivity {
         }
 
     }
-    private void updateSiswa(String id, String judul, String deskripsi){
+    private boolean  updateSiswa(String id, String judul, String deskripsi){
         //input time
         Date tanggal = Calendar.getInstance().getTime();
         System.out.println("Current time => " + tanggal);
 
         SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
         String time = df.format(tanggal);
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("siswa").child(id);
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Siswa").child(id);
 
         Siswa siswa = new Siswa(id,judul,deskripsi,time);
 
         databaseReference.setValue(siswa);
         Toast.makeText(this, "Catatan Berhasil diedit!", Toast.LENGTH_SHORT).show();
+
+        return true;
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -129,7 +131,7 @@ public class InputData extends AppCompatActivity {
         return true;
     }
     private void deleteSiswa(String id){
-        DatabaseReference dbSiswa = FirebaseDatabase.getInstance().getReference("siswa").child(id);
+        DatabaseReference dbSiswa = FirebaseDatabase.getInstance().getReference("Siswa").child(id);
 
         dbSiswa.removeValue();
         Toast.makeText(this, "Data berhasil dihapus!", Toast.LENGTH_SHORT).show();
